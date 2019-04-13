@@ -1,0 +1,8 @@
+# data
+*.dat
+
+# log
+*.log
+
+# temp
+*.*~

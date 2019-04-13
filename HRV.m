@@ -23,89 +23,70 @@ Data5.Properties.VariableNames = {'Data' 'Time'};
 % 全部心電圖 N*5 分鐘, N = 6
 % 合併成一張表格, 利用 pan_tompkin 演算法找到 QRS
 Datas = [Data0 ; Data1 ; Data2 ; Data3 ; Data4 ; Data5];
-%[map, r, delay] = pan_tompkin(Datas.('Data'), 200, 0);
+[map, r, delay] = pan_tompkin(Datas.('Data'), 200, 0);
+
+% 總平均心跳 6*5分鐘
+[a, len] = size(r);
+RR = len/(5*6);
 
 % 時間差 ms
-%rrInterval = RR_Interval(r, Datas);
+rrInterval = RR_Interval(r, Datas);
 
-% 指標 - NN(ms)
-%NN = mean(rrInterval);
+% 指標 - Mean NN(ms) Normal-to-Normal (NN) intervals
+Mean_NN = mean(rrInterval);
 
-% 指標 - SDNN(ms)
-%SDNN = std(rrInterval);
-
-NN50 = max(rrInterval);
+% 指標 - SDNN(ms) standard deviation of all normal to normal intervals
+SDNN = std(rrInterval);
 
 % =================================================================== %
 % 第一段五分鐘
 [map, r, delay] = pan_tompkin(Data0.('Data'), 200, 0);
 rrInvertal0 = RR_Interval(r, Data0);
+MeanNN0 = mean(rrInvertal0);
+SDNN0 = std(rrInvertal0);
+[a, len] = size(r);
+RR0 = len/5;
 
 [map, r, delay] = pan_tompkin(Data1.('Data'), 200, 0);
 rrInvertal1 = RR_Interval(r, Data1);
+MeanNN1 = mean(rrInvertal1);
+SDNN1 = std(rrInvertal1);
+[a, len] = size(r);
+RR1 = len/5;
 
 [map, r, delay] = pan_tompkin(Data2.('Data'), 200, 0);
 rrInvertal2 = RR_Interval(r, Data2);
+MeanNN2 = mean(rrInvertal2);
+SDNN2 = std(rrInvertal2);
+[a, len] = size(r);
+RR2 = len/5;
 
 [map, r, delay] = pan_tompkin(Data3.('Data'), 200, 0);
 rrInvertal3 = RR_Interval(r, Data3);
+MeanNN3 = mean(rrInvertal3);
+SDNN3 = std(rrInvertal3);
 
 [map, r, delay] = pan_tompkin(Data4.('Data'), 200, 0);
 rrInvertal4 = RR_Interval(r, Data4);
+MeanNN4 = mean(rrInvertal4);
+SDNN4 = std(rrInvertal4);
+[a, len] = size(r);
+RR4 = len/5;
 
 [map, r, delay] = pan_tompkin(Data5.('Data'), 200, 0);
 rrInvertal5 = RR_Interval(r, Data5);
+MeanNN5 = mean(rrInvertal5);
+SDNN5 = std(rrInvertal5);
+[a, len] = size(r);
+RR5 = len/5;
 
 % 指標 - SDANN_Index(ms) 先平均值再標準差
-SDANN = std( [ mean(rrInvertal0) mean(rrInvertal1) mean(rrInvertal2) mean(rrInvertal3) mean(rrInvertal4) mean(rrInvertal5) ]);
+SDANN = std( [ MeanNN0 MeanNN1 MeanNN2 MeanNN3 MeanNN4 MeanNN5 ]);
 
-% 指標 - SDNN_Index(ms) 先標準差再平均值
-%SDANN_Index = mean( [ std(rrInvertal0) std(rrInvertal1) std(rrInvertal2) std(rrInvertal3) std(rrInvertal4) std(rrInvertal5) ]);
+SDNN_Index = mean( [ SDNN0 SDNN1 SDNN2 SDNN3 SDNN4 SDNN5 ]);
 
-% [map,r,delay]=pan_tompkin(Data1,200,0);    % 利用pan_tomkin算法找到R?
-% [a,l]=size(r);
-% for i=2:l;
-%     t(i-1)=r(i)-r(i-1);   %求出R-R?的??值，即使HRV
-% end
-% sdann1 = std(t);
-% 
-% [map,r,delay]=pan_tompkin(Data2,200,0);    % 利用pan_tomkin算法找到R?
-% [a,l]=size(r);
-% for i=2:l;
-%     t(i-1)=r(i)-r(i-1);   %求出R-R?的??值，即使HRV
-% end
-% sdann2 = std(t);
-% 
-% [map,r,delay]=pan_tompkin(Data3,200,0);    % 利用pan_tomkin算法找到R?
-% [a,l]=size(r);
-% for i=2:l;
-%     t(i-1)=r(i)-r(i-1);   %求出R-R?的??值，即使HRV
-% end
-% sdann3 = std(t);
-% 
-% [map,r,delay]=pan_tompkin(Data4,200,0);    % 利用pan_tomkin算法找到R?
-% [a,l]=size(r);
-% for i=2:l;
-%     t(i-1)=r(i)-r(i-1);   %求出R-R?的??值，即使HRV
-% end
-% sdann4 = std(t);
-% 
-% [map,r,delay]=pan_tompkin(Data5,200,0);    % 利用pan_tomkin算法找到R?
-% [a,l]=size(r);
-% for i=2:l;
-%     t(i-1)=r(i)-r(i-1);   %求出R-R?的??值，即使HRV
-% end
-% sdann5 = std(t);
-% 
-% SDANN = mean([sdann0 sdann1 sdann2 sdann3 sdann4 sdann5]);
 
-% 
-% % r = 索引值
-% [a,l]=size(r);
-% for i=2:l;
-%     t(i-1)=r(i)-r(i-1);   %求出R-R?的??值，即使HRV
-% end
-% 
+% ============================
 % x= r(1:451);
 % y=interp1(x,t,r(1):1:r(20),'spline');  %利用插值法求出以原ecg信?的采?率fs的?合函?
 % plot(y);hold on,

@@ -4,13 +4,14 @@ function rr_interval = RR_Interval(r,data)
     % 取得 RR 個數, len = RR 個數    
     [a, rrLen]=size(r);
     % 時間差 ms, 請留意時間格式
+    
     for i=2:rrLen
         % N 時間點
-        tPrev = datetime(data.('Time')(r(i-1)), 'InputFormat', 'yyyy-MM-dd''T''HH:mm:ss.SSS', 'Format', 'yyyy-MM-dd HH:mm:ss.SSS');
+        tPrev = DateStr2Num(data(r(i-1)), 1030);
         % N+1 時間點
-        tNext = datetime(data.('Time')(r(i)), 'InputFormat', 'yyyy-MM-dd''T''HH:mm:ss.SSS', 'Format', 'yyyy-MM-dd HH:mm:ss.SSS');
+        tNext = DateStr2Num(data(r(i)), 1030);
         % N 與 N+1 時間差(ms)
-        rr_interval(i-1) = milliseconds(diff(datetime([ tPrev ; tNext ])));
+        rr_interval(i-1) = diff([ tPrev ; tNext ])*24*3600*1000;
     end
 end
 

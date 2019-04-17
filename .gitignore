@@ -1,8 +1,12 @@
 # data
-*.dat
+datas
 
 # log
 *.log
 
 # temp
 *.*~
+
+# package lib
+
+*.zip

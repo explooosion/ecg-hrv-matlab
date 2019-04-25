@@ -16,10 +16,10 @@ Unit = M;
 UnitTime = Unit * 60;
 
 % 起始時間索引值
-dIndex = 1000;
+dIndex = 500;
 
 % 起始時間索引值(會更新)
-sIndex = dIndex;
+sIndex = 500;
 
 % 起算時間, 1030 格式
 sTime = DateStr2Num(Data(dIndex,2), 1030);
@@ -30,8 +30,7 @@ counter = 0;
 % 存儲 Unit 分鐘為一段的 cell
 t5MINS = {};
 
-tic;
-disp('進行時間切割...');
+%tic;
 
 %%
 for i=dIndex:Rows
@@ -50,10 +49,10 @@ for i=dIndex:Rows
 end
 %%
 
-[a, Len] = size(t5MINS);
+Len = length(t5MINS);
 
-disp(['剩下', num2str(Rows - sIndex), '筆, 未滿 ', num2str(Unit) ,' 分鐘']);
-toc
+disp(['總共切成', num2str(counter) , '段,' ,' 剩下', num2str(Rows - sIndex), '筆, 未滿', num2str(Unit) ,'分鐘']);
+%toc
 
 end
 

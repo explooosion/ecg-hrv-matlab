@@ -13,7 +13,7 @@ getNames = dir(PATH);
 for s=1:length(getNames)
     if(length(getNames(s).name) == 3)
     % ======================================================
-    NAME = getNames(s).name;;
+    NAME = getNames(s).name;
     getFiles = dir([PATH NAME '/']);
     files = {};
     HRVAll = [];

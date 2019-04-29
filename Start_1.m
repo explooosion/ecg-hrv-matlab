@@ -9,10 +9,10 @@ disp('讀取檔案...');
 PATH = './export/';
 
 % 請輸入姓名
-NAME = '張孝睿';
+NAME = '劉仁恩';
 
 % 請提供共有幾個階段
-STAGES = {'a' , 'b' , 'c' , 'd' , 'e' };
+STAGES = {'a','b','c','d'};
 
 for s=1:length(STAGES)
     

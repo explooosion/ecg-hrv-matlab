@@ -17,7 +17,7 @@ stage = unique(HRV(:,1));
 Header = {'Stage','NNAvg','NN','MeanRR','SDNN','NN50','pNN50','RMSSD','SDRM','TP','HF','LF','VLF','ULF','nLF','nHF','LFHF_Ratio'};
 
 % 輸入要看的指標
-chartType = 4;
+chartType = 2;
 
 HRV_start = zeros(length(stage),1);
 HRV_end = zeros(length(stage),1);

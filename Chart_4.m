@@ -28,14 +28,14 @@ for g=1:length(Groups(1,:))
         Header = {'Stage','NNAvg','NN','MeanRR','SDNN','NN50','pNN50','RMSSD','SDRM','TP','HF','LF','VLF','ULF','nLF','nHF','LFHF_Ratio'};
 
         % 輸入要看的指標
-        chartType = 11;
+        chartType = 17;
 
         % 總天數，第一組四天，第二組八天
         if g==1
-            stageLen = 4
+            stageLen = 4;
         end
         if g==2
-            stageLen = 4
+            stageLen = 7;
         end
         HRV_mean = zeros(stageLen,1);
 
@@ -75,7 +75,7 @@ for g=1:length(x1)
 end
 
 % group2
-x2 = [1,2,3,4];
+x2 = [1,2,3,4,5,6,7];
 y2 = zeros(1,length(x2));
 % 計算每組每天組員平均
 for g=1:length(x2)

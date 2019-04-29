@@ -8,7 +8,7 @@ clear;
 PATH = './export/';
 
 % ½Ð¿é¤J©m¦W
-NAME = '©P«a·ì';
+NAME = '¼B¤¯®¦';
 
 HRV =  cell2mat(table2cell(readtable([ PATH '/' NAME '/HRV.csv' ])));
 

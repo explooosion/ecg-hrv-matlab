@@ -88,7 +88,7 @@ Pxx(1) = 0;
 % disp(['bps - max ' num2str(max(bps)) ' , min ' num2str(min(bps))]);
 % disp(['pxx - max ' num2str(max(Pxx)) ' , min ' num2str(min(Pxx))]);
 
-TP  = bandpower(Pxx,F,'psd');
+TP  = bandpower(Pxx,F,[0 0.4], 'psd');
 HF  = bandpower(Pxx,F,[0.15 0.4],'psd');
 LF  = bandpower(Pxx,F,[0.04 0.15],'psd');
 VLF = bandpower(Pxx,F,[0.003 0.04],'psd');
